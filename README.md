@@ -25,6 +25,8 @@ https://github.com/user-attachments/assets/7e53b88c-aba9-4eea-8708-9bbf0d0305fc
 
 https://github.com/user-attachments/assets/e37c5775-6e80-4cb5-9320-a04b54792e0e
 
+https://github.com/user-attachments/assets/71eef683-a996-488f-b51b-89e149d0cc6e
+
 More real world demonstrations are available on the [project page](https://hanruihua.github.io/neupan_project/).
 
 ![](./img/Architecture.png)
@@ -86,10 +88,10 @@ Since there are quite a lot of parameters setting for the Neupan planner, we pro
 
 | Parameter Name | Type / Default Value                       | Description                                                                                                    |
 | -------------- | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| `kinematics`   | `str` / "diff"                             | The kinematics of the robot. "diff" for differential drive, "acker" for Ackermann drive.                       |
+| `kinematics`   | `str` / "diff"                             | The kinematics of the robot. `diff` for differential drive, `acker` for Ackermann drive. For `diff` robot, the output action is linear and angular speed. For `acker` robot, the output action is linear speed and steering angle.                      |
 | `vertices`     | `list[list[float]]` / None                 | The vertices of the robot in the initial state. `[[x1, y1], [x2, y2], ...]`                                    |
-| `max_speed`    | `list[float]` / [inf, inf]                 | The maximum speed of the robot.                                                                                |
-| `max_acce`     | `list[float]` / [inf, inf]                 | The maximum acceleration of the robot.                                                                         |
+| `max_speed`    | `list[float]` / [inf, inf]                 | The maximum speed of the robot. For `diff`: [max_linear_speed, max_angular_speed]. For `acker`: [max_linear_speed, max_steering_angle].                                                                                |
+| `max_acce`     | `list[float]` / [inf, inf]                 | The maximum acceleration of the robot. For `diff`: [max_linear_acceleration, max_angular_acceleration]. For `acker`: [max_linear_acceleration, max_steering_acceleration].                                                                                |
 | `wheelbase`    | `float` / None                             | The wheelbase of the robot. Generally set for the ackermann robots.                                            |
 | `length`       | `float` / None                             | The length of the robot. If the `vertices` is not given, this parameter is required for rectangle robot simply |
 | `width`        | `float` / None                             | The width of the robot.  If the `vertices` is not given, this parameter is required for rectangle robot simply |

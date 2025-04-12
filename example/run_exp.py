@@ -17,8 +17,8 @@ def main(
     env = EnvBase(env_file, save_ani=save_animation, full=full, display=no_display)
     neupan_planner = neupan.init_from_yaml(planner_file)
     
-    # env.show()
     # neupan_planner.update_adjust_parameters(q_s=0.5, p_u=1.0, eta=10.0, d_max=1.0, d_min=0.1)
+    # neupan_planner.set_reference_speed(5)
 
     for i in range(max_steps):
 
@@ -42,8 +42,8 @@ def main(
 
         env.draw_points(neupan_planner.dune_points, s=25, c="g", refresh=True)
         env.draw_points(neupan_planner.nrmp_points, s=13, c="r", refresh=True)
-        env.draw_trajectory(info["opt_state_list"], "r", refresh=True)
-        env.draw_trajectory(info["ref_state_list"], "b", refresh=True)
+        env.draw_trajectory(neupan_planner.opt_trajectory, "r", refresh=True)
+        env.draw_trajectory(neupan_planner.ref_trajectory, "b", refresh=True)
 
         env.step(action)
         env.render()
